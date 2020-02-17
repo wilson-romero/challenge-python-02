@@ -9,15 +9,22 @@ def generate_password():
     # Start coding here
     lowercase = string.ascii_lowercase
     uppercase = lowercase.upper()
-    letters = [lowercase,uppercase,string.digits,string.punctuation]
+    punctuation = ''.join(SYMBOLS)
+    letters = [lowercase,uppercase,string.digits,punctuation]
 
-    result = []
-    size = random.randint(8, 17)
+    password = []
+    for i in range(4):
+        password.append(random.choice(letters[i]))
+
+    size = random.randint(5, 13)
+
     for i in range(1,size):
         pos = random.randint(0, 3)
-        result.append(random.choice(letters[pos]))
-
-    return ''.join(result)
+        password.append(random.choice(letters[pos]))
+    
+    random.shuffle(password)
+    
+    return ''.join(password)
 
 
 
